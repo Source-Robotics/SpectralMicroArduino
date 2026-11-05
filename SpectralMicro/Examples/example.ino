@@ -18,8 +18,7 @@ void setup() {
 }
 
 void loop() {
-    mySerial.Cal();
     Serial.println("testing");
     mySerial.loop(); // Continuously check for incoming data
-    delay(1000); // Give some time for the serial connection to establish
+    delay(1000); // once a second
 }

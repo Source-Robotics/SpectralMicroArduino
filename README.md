@@ -59,10 +59,9 @@ void setup() {
 }
 
 void loop() {
-    mySerial.Cal();
     Serial.println("testing");
     mySerial.loop(); // Continuously check for incoming data
-    delay(1000); // Give some time for the serial connection to establish
+    delay(1000); // once a second
 }
 ```
 
@@ -86,7 +85,7 @@ In [SpectralMicro/Examples](https://github.com/Source-Robotics/SpectralMicroArdu
 
 | Example | What it does |
 |---|---|
-| `example.ino` | the quick start above, on a Teensy 4.1: opens `Serial1` to the driver at 256000 baud, sets KV, L and R and starts a calibration, then every second sends `#Cal` again, prints `testing` and prints every line the driver sent |
+| `example.ino` | the quick start above, on a Teensy 4.1: opens `Serial1` to the driver at 256000 baud, sets KV, L and R and starts a calibration, then every second prints `testing` and every line the driver sent |
 
 ## API reference
 
@@ -102,7 +101,7 @@ The class `SerialCommandLibrary`, in `SpectralMicro.h`:
 | `Cal()` | sends `#Cal`: runs the driver's calibration; it measures R and L, finds the pole pairs, the phase order and the angle offset, and measures Kt, KV and the flux linkage |
 | `loop()` | prints every line the driver sent on the USB serial port (`Serial`), as `Received: <line>` |
 
-Each command ends with CR LF. The value is written as Arduino's `String(float)` writes it, with two decimals.
+Each command ends with CR LF. The value is written with six decimals (`String(value, 6)`), so an inductance such as 0.0004 H arrives whole.
 
 ## To do
 

@@ -7,15 +7,15 @@ void SerialCommandLibrary::begin(long baudRate) {
 }
 
 void SerialCommandLibrary::KV(float value) {
-    sendCommand("#KV " + String(value));
+    sendCommand("#KV " + String(value, 6));
 }
 
 void SerialCommandLibrary::L(float value) {
-    sendCommand("#L " + String(value));
+    sendCommand("#L " + String(value, 6));
 }
 
 void SerialCommandLibrary::R(float value) {
-    sendCommand("#R " + String(value));
+    sendCommand("#R " + String(value, 6));
 }
 
 void SerialCommandLibrary::Cal() {
